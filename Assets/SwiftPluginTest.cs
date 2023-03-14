@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using IntPtr = System.IntPtr;
 
-sealed class Test : MonoBehaviour
+sealed class SwiftPluginTest : MonoBehaviour
 {
+    [SerializeField] Text _label = null;
+
     [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_create")]
     private static extern IntPtr PluginCreate();
 
@@ -24,7 +27,7 @@ sealed class Test : MonoBehaviour
         var ptr = PluginCreate();
         PluginSetParam1(ptr, 1);
         PluginSetParam2(ptr, 2);
-        Debug.Log($"1 + 2 = {PluginGetSum(ptr)}");
+        _label.text = $"1 + 2 = {PluginGetSum(ptr)}";
         PluginDestroy(ptr);
     }
 }
