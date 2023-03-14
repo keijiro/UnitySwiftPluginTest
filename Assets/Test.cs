@@ -4,19 +4,19 @@ using IntPtr = System.IntPtr;
 
 sealed class Test : MonoBehaviour
 {
-    [DllImport("UnitySwiftPluginTest", EntryPoint = "plugin_create")]
+    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_create")]
     private static extern IntPtr PluginCreate();
 
-    [DllImport("UnitySwiftPluginTest", EntryPoint = "plugin_set_param1")]
+    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_set_param1")]
     private static extern void PluginSetParam1(IntPtr self, int value);
 
-    [DllImport("UnitySwiftPluginTest", EntryPoint = "plugin_set_param2")]
+    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_set_param2")]
     private static extern void PluginSetParam2(IntPtr self, int value);
 
-    [DllImport("UnitySwiftPluginTest", EntryPoint = "plugin_get_sum")]
+    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_get_sum")]
     private static extern int PluginGetSum(IntPtr self);
 
-    [DllImport("UnitySwiftPluginTest", EntryPoint = "plugin_destroy")]
+    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_destroy")]
     private static extern void PluginDestroy(IntPtr self);
 
     void Start()
