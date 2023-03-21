@@ -4,10 +4,15 @@ final class Plugin {
 }
 
 @_cdecl("plugin_create")
-public func plugin_create() -> OpaquePointer {
-    let type = Plugin()
-    let retained = Unmanaged.passRetained(type).toOpaque()
-    return OpaquePointer(retained)
+public func plugin_create(value: CInt) -> OpaquePointer! {
+    if (value == 0) {
+        return nil
+    }
+    else {
+        let type = Plugin()
+        let retained = Unmanaged.passRetained(type).toOpaque()
+        return OpaquePointer(retained)
+    }
 }
 
 @_cdecl("plugin_set_param1")
