@@ -8,19 +8,25 @@ sealed class SwiftPluginTest : MonoBehaviour
 {
     [SerializeField] Text _label = null;
 
-    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_create")]
+#if UNITY_IOS && !UNITY_EDITOR
+    const string DllName = "__Internal";
+#else
+    const string DllName = "SwiftPlugin";
+#endif
+
+    [DllImport(DllName, EntryPoint = "plugin_create")]
     private static extern IntPtr PluginCreate(int value);
 
-    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_set_param1")]
+    [DllImport(DllName, EntryPoint = "plugin_set_param1")]
     private static extern void PluginSetParam1(IntPtr self, int value);
 
-    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_set_param2")]
+    [DllImport(DllName, EntryPoint = "plugin_set_param2")]
     private static extern void PluginSetParam2(IntPtr self, string text);
 
-    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_get_sum")]
+    [DllImport(DllName, EntryPoint = "plugin_get_sum")]
     private static extern int PluginGetSum(IntPtr self);
 
-    [DllImport("SwiftPlugin.dll", EntryPoint = "plugin_destroy")]
+    [DllImport(DllName, EntryPoint = "plugin_destroy")]
     private static extern void PluginDestroy(IntPtr self);
 
     void Start()

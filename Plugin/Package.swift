@@ -10,8 +10,6 @@ let package = Package(
             type: .dynamic,
             targets: ["SwiftPlugin"]),
     ],
-    dependencies: [
-    ],
     targets: [
         .target(
             name: "SwiftPlugin",
