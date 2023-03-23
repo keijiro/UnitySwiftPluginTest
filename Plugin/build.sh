@@ -1,9 +1,5 @@
 #!/bin/sh -e -x
 
-# Build directory removal
-rm -rf .build
-rm -rf .xcodebuild
-
 # macOS binary build using SPM
 swift build -c release --arch arm64 --arch x86_64
 
