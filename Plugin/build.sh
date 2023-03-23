@@ -5,7 +5,7 @@ rm -rf .build
 rm -rf .xcodebuild
 
 # macOS binary build using SPM
-swift build -c release --arch arm64 --arch x86_64 --product SwiftPlugin
+swift build -c release --arch arm64 --arch x86_64
 
 # iOS binary build using Xcode
 xcodebuild build \
